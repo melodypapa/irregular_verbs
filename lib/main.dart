@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
   var _pages = [
     Text('Page 1 - Announcement'),
     EditFormPage(),
-    DialogPage(),
+    SnackbarPage(),
   ];
 
   @override

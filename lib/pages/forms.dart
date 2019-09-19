@@ -245,3 +245,75 @@ class DialogPage extends StatelessWidget {
     );
   }
 }
+
+class AlertDialogPage extends StatefulWidget {
+  @override
+  _AlertDialogPageState createState() => _AlertDialogPageState();
+}
+
+class _AlertDialogPageState extends State<AlertDialogPage> {
+  @override
+  Widget build(BuildContext context) {
+    _showIt() {
+      return showDialog(
+          context: context,
+          barrierDismissible: true,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('We come in peace...'),
+              content: Center(
+                child: Text("...shoot to kill shoot to kill shoot to kill"),
+              ),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text("Beam me up, Scotty!"),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          });
+    }
+
+    return Center(
+      child: RaisedButton(
+        child: Text('Show it'),
+        onPressed: _showIt,
+      ),
+    );
+  }
+}
+
+class SnackbarPage extends StatefulWidget {
+  @override
+  _SnackbarPageState createState() => _SnackbarPageState();
+}
+
+class _SnackbarPageState extends State<SnackbarPage> {
+  @override
+  Widget build(BuildContext context) {
+    _showIt() {
+      Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content: Text('I like pie!'),
+          backgroundColor: Colors.red,
+          duration: Duration(seconds: 5),
+          action: SnackBarAction(
+            label: "Chow down",
+            onPressed: (){
+              print("Getting fat!");
+            },
+          ),
+        ),
+      );
+    }
+
+    return Center(
+      child: RaisedButton(
+        child: Text('Show it'),
+        onPressed: _showIt,
+      ),
+    );
+  }
+}
